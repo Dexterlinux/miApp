@@ -1,20 +1,20 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { HomePage } from './home.page';
+import { LoginPage } from './login.page'; 
 
-describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+describe('LoginPage', () => { 
+  let component: LoginPage;
+  let fixture: ComponentFixture<LoginPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomePage],
+      declarations: [LoginPage], 
       imports: [IonicModule.forRoot()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomePage);
+    fixture = TestBed.createComponent(LoginPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
@@ -23,5 +23,5 @@ describe('HomePage', () => {
     expect(component).toBeTruthy();
   });
 
-  // Agrega más pruebas según tus necesidades
+  
 });
