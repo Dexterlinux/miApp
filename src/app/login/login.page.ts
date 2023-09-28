@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -12,23 +11,20 @@ export class LoginPage {
     username: '',
     password: '',
   };
+  usuario = 'alumno'; // Cambia esto a 'profesor' para el usuario profesor
 
-  constructor(
-    private navCtrl: NavController,
-    private afAuth: AngularFireAuth
-  ) {}
+  constructor(private navCtrl: NavController) {}
 
-  async login() {
-    try {
-      const userCredential = await this.afAuth.signInWithEmailAndPassword(
-        this.loginData.username,
-        this.loginData.password
-      );
-      // Inicio de sesión exitoso, redirige al usuario a la página principal
-      this.navCtrl.navigateRoot('/home');
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      // Maneja errores de inicio de sesión, como credenciales incorrectas
+  login() {
+    // Aquí puedes implementar la lógica de inicio de sesión
+    // Por ejemplo, verifica las credenciales y redirige al usuario a la página correspondiente
+    if (this.loginData.username === 'usuario' && this.loginData.password === 'contraseña') {
+      // Usuario y contraseña válidos
+      const destino = this.usuario === 'alumno' ? '/my-app' : '/home';
+      this.navCtrl.navigateRoot(destino);
+    } else {
+      // Credenciales incorrectas, muestra un mensaje de error
+      console.error('Credenciales incorrectas');
     }
   }
 }

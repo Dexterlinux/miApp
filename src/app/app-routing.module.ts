@@ -1,37 +1,18 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginPage } from './login/login.page';
+import { HomePage } from './home/home.page';
+import { MyAppPage } from './my-app/my-app.page';
 
 const routes: Routes = [
-  { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule) },
-  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule) },
-  
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'my-app',
-    loadChildren: () => import('./my-app/my-app.module').then( m => m.MyAppPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Ruta predeterminada
+  { path: 'login', component: LoginPage },
+  { path: 'home', component: HomePage },
+  { path: 'my-app', component: MyAppPage },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,17 +1,16 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { LoginPage } from './login.page'; 
+import { RouterTestingModule } from '@angular/router/testing';
+import { LoginPage } from './login.page';
 
-describe('LoginPage', () => { 
+describe('LoginPage', () => {
   let component: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginPage], 
-      imports: [IonicModule.forRoot()],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      declarations: [LoginPage],
+      imports: [IonicModule.forRoot(), RouterTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginPage);
@@ -23,5 +22,15 @@ describe('LoginPage', () => {
     expect(component).toBeTruthy();
   });
 
-  
+  it('should have a login method', () => {
+    expect(component.login).toBeDefined();
+  });
+
+  it('should navigate to /home after successful login', () => {
+    const navigateSpy = spyOn(component['navCtrl'], 'navigateRoot');
+    component.login();
+    expect(navigateSpy).toHaveBeenCalledWith('/home');
+  });
+
+  // Agrega más pruebas según tus necesidades
 });

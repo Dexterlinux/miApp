@@ -1,47 +1,30 @@
-
 <ion-header>
-  <br>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-searchbar></ion-searchbar>
-    
+    <ion-title>MyApp</ion-title>
   </ion-toolbar>
-
 </ion-header>
 
-<ion-content>}
-  
+<ion-content>
+  <ion-menu side="start">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú Profesor</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="cerrarSesion()">Cerrar Sesión</ion-item>
+        <ion-item (click)="verAsistencia()">Ver Asistencia</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Lista de alumnos y botones de asistencia -->
   <ion-list>
     <ion-item *ngFor="let alumno of alumnos">
-      {{ alumno.nombre }} {{ alumno.apellido }}
-      <ion-toggle [(ngModel)]="alumno.presente" (ionChange)="guardarAsistencia(alumno)">
-        {{ alumno.presente ? 'Presente' : 'Ausente' }}
-      </ion-toggle>
+      {{ alumno.nombre }}
+      <ion-button (click)="marcarAsistencia(alumno)">Presente</ion-button>
+      <ion-button (click)="marcarAusencia(alumno)">Ausente</ion-button>
     </ion-item>
   </ion-list>
-  
-  
 </ion-content>
-
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="play-circle"></ion-icon>
-      Listen Now
-    </ion-tab-button>
-    <ion-tab-button tab="radio">
-      <ion-icon name="radio"></ion-icon>
-      Radio
-    </ion-tab-button>
-    <ion-tab-button tab="library">
-      <ion-icon name="library"></ion-icon>
-      Library
-    </ion-tab-button>
-    <ion-tab-button tab="user">
-      <ion-icon name="person"></ion-icon>
-      usuario
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>

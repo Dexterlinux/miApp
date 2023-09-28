@@ -1,20 +1,13 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
-import { MyAppPageRoutingModule } from './my-app-routing.module';
-
-import { MyAppPage } from './my-app.page';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
+  declarations: [AppComponent],
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    MyAppPageRoutingModule
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
   ],
-  declarations: [MyAppPage]
+  // ...
 })
-export class MyAppPageModule {}
+export class AppModule {}

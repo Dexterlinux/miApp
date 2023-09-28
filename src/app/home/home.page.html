@@ -1,27 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Inicio de Sesión
-    </ion-title>
+    <ion-title>Página de Inicio</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="container">
-    <ion-avatar class="profile-pic">
-      <img [src]="profile" />
-    </ion-avatar>
-    <ion-item>
-      <ion-label position="floating">Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input>
-    </ion-item>
+  <ion-card *ngIf="userType === 'alumno'">
+    
+  </ion-card>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-
-    <ion-button expand="full" color="primary" (click)="login()">Iniciar Sesión</ion-button>
-  </div>
+  <ion-card *ngIf="userType === 'profesor'">
+    <
+  </ion-card>
 </ion-content>
-
